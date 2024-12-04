@@ -1,0 +1,211 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #004080;
+    color: white;
+    padding: 10px 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Прижимает список к правой стороне */
+}
+
+nav ul li {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Добавляет фон за текстом */
+    padding: 5px 10px; /* Пространство вокруг текста */
+    display: inline-block; /* Гарантирует, что фон обтекает текст */
+}
+
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+nav ul li a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии */
+    transition: width 0.5s; /* Время эффекта */
+}
+
+nav ul li a:hover:after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px; /* Высота линии */
+    background-color: white; /* Цвет подчеркивания при появлении линии */
+    transition: width 0.5s; /* Время эффекта */
+}
+
+/* Табуляция */
+.tabs {
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 10px 5%;
+}
+
+.tab-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 15px;
+}
+
+.tab-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tab-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tab-item:hover {
+    color: #555;
+}
+
+.tab-item.active {
+    color: black;
+    position: relative;
+}
+
+.tab-item.active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: red;
+}
+
+/* Таблица рекордов */
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+    background-color: rgba(240, 248, 255, 0.9);
+}
+
+.records-table thead {
+    background-color: #004080;
+    color: white;
+}
+
+.records-table th, .records-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.records-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.records-table tbody tr:hover {
+    background-color: rgba(200, 230, 255, 0.5);
+}
+
+.records-table th {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+/* Адаптивность */
+
+/* Для экранов меньше 768px */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 5%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+        margin-right: 0;
+    }
+
+    .tabs {
+        padding: 10px 5%;
+    }
+
+    .tab-item {
+        font-size: 0.9rem;
+    }
+
+    .records-table th, .records-table td {
+        padding: 10px;
+    }
+}
+
+/* Для экранов меньше 480px */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 5%;
+    }
+
+    .tab-item {
+        font-size: 0.8rem;
+    }
+
+    .records-table {
+        font-size: 0.875rem;
+    }
+
+    .records-table th, .records-table td {
+        padding: 8px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Список становится вертикальным */
+        align-items: flex-end; /* Прижать к правой стороне */
+    }
+
+    nav ul li {
+        width: 100%; /* Фон на всю ширину экрана */
+        text-align: right; /* Текст выровнен по правому краю */
+    }
+}
